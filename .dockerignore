@@ -1,0 +1,19 @@
+# Ignore git files
+.git
+.gitignore
+
+# Ignore node modules
+**/node_modules
+
+# Ignore local environment files
+**/.env
+
+# Ignore logs
+**/logs
+**/*.log
+
+# Ignore development files and configs
+.vscode/
+.idea/
+.DS_Store
+
