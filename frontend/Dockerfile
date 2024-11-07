@@ -14,14 +14,14 @@ COPY --from=build /app/build /usr/share/nginx/html
 
 # Ensure necessary directories have the correct permissions
 USER root
-RUN mkdir -p /var/cache/nginx /var/run /etc/nginx/conf.d && \
+RUN mkdir -p /var/cache/nginx/client_temp /var/run /etc/nginx/conf.d && \
     chown -R nginx:nginx /var/cache/nginx /var/run /etc/nginx/conf.d
 
 # Switch to nginx user for security best practices
 USER nginx
 
 # Expose the default Nginx port
-EXPOSE 8080
+EXPOSE 80
 
 # Run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
