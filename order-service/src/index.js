@@ -1,14 +1,17 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = express();
-const PORT = process.env.PORT || 8082;
 
 dotenv.config();
 
-
+const PORT = process.env.PORT || 8082;
 
 app.use(express.json());
+
+// Root route for the browser
+app.get('/', (req, res) => {
+  res.send("Welcome to the Order Service!");
+});
 
 // Define order routes
 app.get('/orders', (req, res) => {
@@ -20,7 +23,6 @@ app.post('/orders', (req, res) => {
 });
 
 // Start server
-app.listen(process.env.PORT, () => {
-  console.log(`Order Service running on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Order Service running on port ${PORT}`);
 });
-
