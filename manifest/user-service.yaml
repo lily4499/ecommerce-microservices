@@ -16,7 +16,7 @@ spec:
       - name: user-service
         image: default-route-openshift-image-registry.apps.sandbox-m2.ll9k.p1.openshiftapps.com/lili2024-dev/user-service:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 8087
         env:
         - name: DB_URI
           value: "mongodb://userdb-uri"
@@ -32,18 +32,6 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 8080
-  type: ClusterIP
-
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: user-service-route
-spec:
-  to:
-    kind: Service
-    name: user-service
-  port:
-    targetPort: 8080
+    targetPort: 8087
+  type: NodePort
 
