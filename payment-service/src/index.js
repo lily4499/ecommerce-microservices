@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Root route for the browser
 app.get('/', (req, res) => {
-  res.send("
+  res.send(`
     <h1 style="color: green; font-size: 2.5em; text-align: center; padding-top: 20px;">
         Welcome to the Payment Service!
     </h1>
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
         and seamless checkout experience, ensuring your transactions are as safe and convenient as possible.
     </p>
 
-    ");
+    `);
 });
 
 // Define payment routes
