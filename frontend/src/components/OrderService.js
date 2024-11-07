@@ -1,37 +1,39 @@
-// src/components/OrderService.js
+// frontend/src/components/OrderService.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import config from '../config';
 
-function OrderService() {
-  const [orders, setOrders] = useState([]);
-  const [error, setError] = useState(null);
+const OrderService = () => {
+    const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    axios.get(`${config.ORDER_SERVICE_URL}/orders`)
-      .then(response => setOrders(response.data))
-      .catch(error => {
-        console.error("Error fetching orders:", error);
-        setError("Failed to load orders.");
-      });
-  }, []);
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_ORDER_SERVICE_URL}orders`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setOrders(data);
+            } catch (error) {
+                console.error('Error fetching orders:', error);
+            }
+        };
 
-  return (
-    <div>
-      <h2>Order List</h2>
-      {error ? (
-        <p style={{ color: 'red' }}>{error}</p>
-      ) : (
-        <ul>
-          {orders.map((order, index) => (
-            <li key={index}>Order ID: {order.id}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+        fetchOrders();
+    }, []);
+
+    return (
+        <div>
+            <h2>Order Service</h2>
+            <ul>
+                {orders.map(order => (
+                    <li key={order.id}>{order.description}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
 
 export default OrderService;
+
 
 
