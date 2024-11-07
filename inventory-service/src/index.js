@@ -6,10 +6,6 @@ const PORT = process.env.PORT || 8084;
 
 dotenv.config();
 
-// Database connection
-mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Inventory Service DB connected"))
-  .catch((err) => console.log("DB Connection Error:", err));
 
 app.use(express.json());
 
