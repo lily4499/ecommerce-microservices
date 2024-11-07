@@ -1,9 +1,11 @@
+// src/components/PaymentService.js
 import React from 'react';
 import axios from 'axios';
+import config from '../config';
 
 function PaymentService() {
   const processPayment = () => {
-    axios.post(`${process.env.REACT_APP_PAYMENT_SERVICE_URL}/payment`)
+    axios.post(`${config.PAYMENT_SERVICE_URL}/payment`)
       .then(response => alert("Payment processed successfully!"))
       .catch(error => console.error("Error processing payment:", error));
   };
@@ -17,4 +19,5 @@ function PaymentService() {
 }
 
 export default PaymentService;
+
 
