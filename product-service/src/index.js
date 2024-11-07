@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Root route for the browser
 app.get('/', (req, res) => {
-  res.send("
+  res.send(`
  <h1 style="color: darkorange; font-size: 2.5em; text-align: center; padding-top: 20px;">
         Welcome to the Product Service!
     </h1>
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
         a smooth, well-organized shopping experience tailored just for you. If you need further assistance, 
         our support team is always here to help.
     </p>
-    ");
+ `);
 });
 
 // Define product routes
