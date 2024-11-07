@@ -60,10 +60,7 @@ function App() {
           </Routes>
         </div>
 
-        {/* Back Navigation */}
-        <nav style={{ marginTop: '40px', marginBottom: '20px' }}>
-          <Link to="/">Back to Frontend</Link>
-        </nav>
+        
       </div>
     </Router>
   );
