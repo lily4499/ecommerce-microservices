@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import UserService from './components/UserService'; // Keep these components if needed
 import ProductService from './components/ProductService'; // Keep these components if needed
 import OrderService from './components/OrderService'; // Keep these components if needed
@@ -17,12 +17,12 @@ function App() {
         <nav style={{ marginBottom: '40px', marginTop: '20px' }}>
           <h3>Explore Each Microservice</h3>
           <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center', gap: '20px' }}>
-            <li><a href="http://user-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">User Service</a></li>
-            <li><a href="http://product-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Product Service</a></li>
-            <li><a href="http://order-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Order Service</a></li>
-            <li><a href="http://payment-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Payment Service</a></li>
-            <li><a href="http://inventory-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Inventory Service</a></li>
-            <li><a href="http://notification-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Notification Service</a></li>
+            <li><a href="http://user-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" rel="noopener noreferrer">User Service</a></li>
+            <li><a href="http://product-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" rel="noopener noreferrer">Product Service</a></li>
+            <li><a href="http://order-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" rel="noopener noreferrer">Order Service</a></li>
+            <li><a href="http://payment-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" rel="noopener noreferrer">Payment Service</a></li>
+            <li><a href="http://inventory-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" rel="noopener noreferrer">Inventory Service</a></li>
+            <li><a href="http://notification-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" rel="noopener noreferrer">Notification Service</a></li>
           </ul>
         </nav>
 
@@ -59,6 +59,11 @@ function App() {
             <Route path="/notification" element={<NotificationService />} />
           </Routes>
         </div>
+
+        {/* Back Navigation */}
+        <nav style={{ marginTop: '40px', marginBottom: '20px' }}>
+          <Link to="/">Back to Frontend</Link>
+        </nav>
       </div>
     </Router>
   );
