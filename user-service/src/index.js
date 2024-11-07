@@ -1,12 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = express();
-const PORT = process.env.PORT || 8087;
 
 dotenv.config();
 
-
+const PORT = process.env.PORT || 8087;  // Default to 8087 if PORT is not defined
 
 app.use(express.json());
 
@@ -20,7 +18,6 @@ app.post('/users', (req, res) => {
 });
 
 // Start server
-app.listen(process.env.PORT, () => {
-  console.log(`User Service running on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`User Service running on port ${PORT}`);
 });
-
