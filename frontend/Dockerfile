@@ -21,7 +21,7 @@ RUN mkdir -p /var/cache/nginx /var/run /etc/nginx/conf.d && \
 USER nginx
 
 # Expose the default Nginx port
-EXPOSE 80
+EXPOSE 8080
 
 # Run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
