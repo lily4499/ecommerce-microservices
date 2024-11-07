@@ -1,22 +1,37 @@
-// src/components/PaymentService.js
-import React from 'react';
-import axios from 'axios';
-import config from '../config';
+// frontend/src/components/PaymentService.js
+import React, { useEffect, useState } from 'react';
 
-function PaymentService() {
-  const processPayment = () => {
-    axios.post(`${config.PAYMENT_SERVICE_URL}/payment`)
-      .then(response => alert("Payment processed successfully!"))
-      .catch(error => console.error("Error processing payment:", error));
-  };
+const PaymentService = () => {
+    const [payments, setPayments] = useState([]);
 
-  return (
-    <div>
-      <h2>Payment Service</h2>
-      <button onClick={processPayment}>Process Payment</button>
-    </div>
-  );
-}
+    useEffect(() => {
+        const fetchPayments = async () => {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_PAYMENT_SERVICE_URL}payments`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setPayments(data);
+            } catch (error) {
+                console.error('Error fetching payments:', error);
+            }
+        };
+
+        fetchPayments();
+    }, []);
+
+    return (
+        <div>
+            <h2>Payment Service</h2>
+            <ul>
+                {payments.map(payment => (
+                    <li key={payment.id}>{payment.amount} - Status: {payment.status}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
 
 export default PaymentService;
 
