@@ -17,9 +17,9 @@ spec:
         image: default-route-openshift-image-registry.apps.sandbox-m2.ll9k.p1.openshiftapps.com/lili2024-dev/order-service:latest
         ports:
         - containerPort: 8082
-         env:
-            - name: PORT
-              value: "8082"  # Set the PORT environment variable explicitly
+        env:
+          - name: PORT
+            value: "8082"  # Set the PORT environment variable explicitly
 
 ---
 apiVersion: v1
@@ -33,3 +33,4 @@ spec:
   - protocol: TCP
     port: 8082
     targetPort: 8082
+
