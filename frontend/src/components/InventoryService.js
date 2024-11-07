@@ -1,25 +1,27 @@
 // frontend/src/components/InventoryService.js
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const InventoryService = () => {
     const [inventory, setInventory] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchInventory = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_INVENTORY_SERVICE_URL}inventory`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setInventory(data);
+                const response = await axios.get(`${process.env.REACT_APP_INVENTORY_SERVICE_URL}inventory`);
+                setInventory(response.data);
             } catch (error) {
                 console.error('Error fetching inventory:', error);
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchInventory();
     }, []);
+
+    if (loading) return <div>Loading...</div>;
 
     return (
         <div>
@@ -34,4 +36,3 @@ const InventoryService = () => {
 };
 
 export default InventoryService;
-
