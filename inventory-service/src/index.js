@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Root route for the browser
 app.get('/', (req, res) => {
-  res.send("
+  res.send(`
            <h1 style="color: blue; font-size: 4em; text-align: center;">Welcome to the Inventory Service!</h1>
     <p style="font-size: 1.2em; text-align: center; padding: 20px;">
         The Inventory Service is a key component of our e-commerce microservices architecture. This service is responsible 
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
         inventory control for a smooth shopping experience. Stay updated on inventory levels, manage stock adjustments, 
         and support the overall health of your e-commerce platform.
     </p>
-    ");
+   `);
 });
 
 // Define inventory routes
