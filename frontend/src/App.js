@@ -17,12 +17,12 @@ function App() {
         <nav style={{ marginBottom: '40px', marginTop: '20px' }}>
           <h3>Explore Each Microservice</h3>
           <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center', gap: '20px' }}>
-            <li><a href="http://user-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">User Service</a></li>
-            <li><a href="http://product-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Product Service</a></li>
-            <li><a href="http://order-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Order Service</a></li>
-            <li><a href="http://payment-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Payment Service</a></li>
-            <li><a href="http://inventory-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Inventory Service</a></li>
-            <li><a href="http://notification-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Notification Service</a></li>
+            <li><a href="http://user-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">User Service</a></li>
+            <li><a href="http://product-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Product Service</a></li>
+            <li><a href="http://order-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Order Service</a></li>
+            <li><a href="http://payment-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Payment Service</a></li>
+            <li><a href="http://inventory-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Inventory Service</a></li>
+            <li><a href="http://notification-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/"  rel="noopener noreferrer">Notification Service</a></li>
           </ul>
         </nav>
 
