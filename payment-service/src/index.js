@@ -7,9 +7,9 @@ dotenv.config();
 const PORT = process.env.PORT || 8083;
 
 app.use(express.json());
-app.use(cors());
-app.use(helmet());
-app.use(morgan('combined'));
+//app.use(cors());
+//app.use(helmet());
+//app.use(morgan('combined'));
 
 // Root route for the browser
 app.get('/', (req, res) => {
