@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Root route for the browser
 app.get('/', (req, res) => {
-  res.send("
+ res.send(`
     <h1 style="color: darkblue; font-size: 2.5em; text-align: center; padding-top: 20px;">
         Welcome to the Notification Service!
     </h1>
@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
         please feel free to reach out to our support team.
     </p>
 
-    ");
+    `);
 });
 
 // Define notification route
