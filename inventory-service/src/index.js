@@ -7,7 +7,7 @@ dotenv.config();
 const PORT = process.env.PORT || 8084;
 
 app.use(express.json());
-app.use(cors()); // Enable CORS
+//app.use(cors()); // Enable CORS
 
 // Root route for the browser
 app.get('/', (req, res) => {
