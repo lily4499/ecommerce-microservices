@@ -4,11 +4,15 @@ const app = express();
 
 dotenv.config();
 
-const PORT = process.env.PORT || 8087;  // Default to 8087 if PORT is not defined
+const PORT = process.env.PORT || 8087;
 
 app.use(express.json());
 
 // Define routes
+app.get('/', (req, res) => {
+  res.send("Welcome to the User Service API!");
+});
+
 app.get('/users', (req, res) => {
   res.send("Get all users");
 });
