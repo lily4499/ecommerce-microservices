@@ -17,11 +17,10 @@ spec:
       - name: frontend
         image: default-route-openshift-image-registry.apps.sandbox-m2.ll9k.p1.openshiftapps.com/lili2024-dev/frontend:latest
         ports:
-        - containerPort: 8080 # Internal container port, adjust if your app listens on a different port
+        - containerPort: 3000 # Updated to match the app's internal port
         env:
           - name: PORT
-            value: "8080"  # Set the PORT environment variable explicitly
-
+            value: "3000"  # Updated to match the internal app port
 
 ---
 apiVersion: v1
@@ -35,5 +34,5 @@ spec:
   ports:
   - name: http
     protocol: TCP
-    port: 8080         # Service port exposed for the route or other cluster services
-    targetPort: 8080  # Internal port of the container application
+    port: 8080         # Service port exposed for external access
+    targetPort: 3000   # Updated to match the internal port of the application
