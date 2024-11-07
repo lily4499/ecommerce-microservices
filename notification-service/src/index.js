@@ -17,7 +17,7 @@ app.use(morgan('combined'));
 // Root route for the browser
 app.get('/', (req, res) => {
   res.send(`
-    <h1 style="color: darkblue; font-size: 2.5em; text-align: center; padding-top: 20px;">
+    <h1 style="color: darkblue; font-size: 4em; text-align: center; padding-top: 20px;">
       Welcome to the Notification Service!
     </h1>
     <p style="font-size: 1.3em; text-align: center; padding: 20px;">
