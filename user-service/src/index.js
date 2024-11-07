@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Define routes
 app.get('/', (req, res) => {
-  res.send("
+  res.send(`
   <h1 style="color: purple; font-size: 2.5em; text-align: center; padding-top: 20px;">
         Welcome to the User Service API!
     </h1>
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
         For more information on using the User Service API, please explore our documentation or contact support. 
         We're here to help you make the most of your user experience on our platform.
     </p>
-    ");
+  `);
 });
 
 app.get('/users', (req, res) => {
