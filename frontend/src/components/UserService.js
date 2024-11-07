@@ -1,5 +1,5 @@
-// frontend/src/components/UserService.js
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const UserService = () => {
     const [users, setUsers] = useState([]);
@@ -7,12 +7,8 @@ const UserService = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_USER_SERVICE_URL}users`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setUsers(data);
+                const response = await axios.get(`${process.env.REACT_APP_USER_SERVICE_URL}users`);
+                setUsers(response.data);
             } catch (error) {
                 console.error('Error fetching users:', error);
             }
