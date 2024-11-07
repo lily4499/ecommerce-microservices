@@ -1,9 +1,11 @@
+// src/components/NotificationService.js
 import React from 'react';
 import axios from 'axios';
+import config from '../config';
 
 function NotificationService() {
   const sendNotification = () => {
-    axios.post(`${process.env.REACT_APP_NOTIFICATION_SERVICE_URL}/notify`)
+    axios.post(`${config.NOTIFICATION_SERVICE_URL}/notify`)
       .then(response => alert("Notification sent successfully!"))
       .catch(error => console.error("Error sending notification:", error));
   };
@@ -17,4 +19,3 @@ function NotificationService() {
 }
 
 export default NotificationService;
-
