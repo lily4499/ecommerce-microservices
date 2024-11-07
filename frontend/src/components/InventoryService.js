@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UserService = () => {
+const InventoryService = () => {
     return (
         <div>
-            <h2>User Service</h2>
-            <p>This service manages user information and authentication.</p>
+            <h2>Inventory Service</h2>
+            <p>This service manages product inventory levels.</p>
+            {/* Additional inventory service content can go here */}
+            
             {/* Back to Frontend Link */}
             <Link to="/">Back to Frontend</Link>
         </div>
     );
 };
 
-export default UserService;
+export default InventoryService;
