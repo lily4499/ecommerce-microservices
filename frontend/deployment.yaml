@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: lili2024-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: default-route-openshift-image-registry.apps.sandbox-m2.ll9k.p1.openshiftapps.com/lili2024-dev/frontend:latest
+        ports:
+        - containerPort: 8080 # Internal container port, adjust if your app listens on a different port
+        env:
+          - name: PORT
+            value: "8080"  # Set the PORT environment variable explicitly
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: lili2024-dev
+spec:
+  selector:
+    app: frontend
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080         # Service port exposed for the route or other cluster services
+    targetPort: 8080  # Internal port of the container application
