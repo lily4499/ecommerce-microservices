@@ -1,35 +1,36 @@
-// src/components/ProductService.js
+// frontend/src/components/ProductService.js
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import config from '../config';
 
-function ProductService() {
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
+const ProductService = () => {
+    const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    axios.get(`${config.PRODUCT_SERVICE_URL}/products`)
-      .then(response => setProducts(response.data))
-      .catch(error => {
-        console.error("Error fetching products:", error);
-        setError("Failed to load products.");
-      });
-  }, []);
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_PRODUCT_SERVICE_URL}products`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
 
-  return (
-    <div>
-      <h2>Product List</h2>
-      {error ? (
-        <p style={{ color: 'red' }}>{error}</p>
-      ) : (
-        <ul>
-          {products.map((product, index) => (
-            <li key={index}>{product.name}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+        fetchProducts();
+    }, []);
+
+    return (
+        <div>
+            <h2>Product Service</h2>
+            <ul>
+                {products.map(product => (
+                    <li key={product.id}>{product.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
 
 export default ProductService;
