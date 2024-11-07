@@ -1,25 +1,27 @@
 // frontend/src/components/PaymentService.js
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const PaymentService = () => {
     const [payments, setPayments] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_PAYMENT_SERVICE_URL}payments`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const data = await response.json();
-                setPayments(data);
+                const response = await axios.get(`${process.env.REACT_APP_PAYMENT_SERVICE_URL}payments`);
+                setPayments(response.data);
             } catch (error) {
                 console.error('Error fetching payments:', error);
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchPayments();
     }, []);
+
+    if (loading) return <div>Loading...</div>;
 
     return (
         <div>
@@ -34,5 +36,4 @@ const PaymentService = () => {
 };
 
 export default PaymentService;
-
 
