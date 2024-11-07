@@ -13,7 +13,7 @@ app.use(cors()); // Enable CORS
 // Root route for the browser
 app.get('/', (req, res) => {
   res.send(`
-    <h1 style="color: blue; font-size: 4em; text-align: center;">Welcome to the Inventory Service!</h1>
+    <h1 style="color: red; font-size: 4em; text-align: center;">Welcome to the Inventory Service!</h1>
     <p style="font-size: 1.2em; text-align: center; padding: 20px;">
         The Inventory Service manages product stock levels to ensure accurate availability in our e-commerce platform.
     </p>
