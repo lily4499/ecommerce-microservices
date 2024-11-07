@@ -6,10 +6,7 @@ const PORT = process.env.PORT || 8087;
 
 dotenv.config();
 
-// Database connection
-mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("User Service DB connected"))
-  .catch((err) => console.log(err));
+
 
 app.use(express.json());
 
