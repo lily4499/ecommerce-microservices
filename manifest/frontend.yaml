@@ -34,17 +34,5 @@ spec:
     protocol: TCP
     port: 81          # Service port exposed for the route or other cluster services
     targetPort: 8080  # Internal port of the container application
-  type: ClusterIP
+  type: NodePort
 
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: frontend-route
-  namespace: lili2024-dev
-spec:
-  to:
-    kind: Service
-    name: frontend
-  port:
-    targetPort: 81   # This should match the Service's `port`, which exposes it externally
