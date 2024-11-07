@@ -1,30 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const UserService = () => {
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_USER_SERVICE_URL}users`);
-                setUsers(response.data);
-            } catch (error) {
-                console.error('Error fetching users:', error);
-            }
-        };
-
-        fetchUsers();
-    }, []);
-
     return (
         <div>
             <h2>User Service</h2>
-            <ul>
-                {users.map(user => (
-                    <li key={user.id}>{user.name}</li>
-                ))}
-            </ul>
+            <p>This service manages user information and authentication.</p>
+            {/* Additional user service content can go here */}
+            
+            {/* Back to Frontend Link */}
+            <Link to="/">Back to Frontend</Link>
         </div>
     );
 };
