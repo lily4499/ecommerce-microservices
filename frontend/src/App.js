@@ -13,7 +13,21 @@ function App() {
       <div style={{ textAlign: 'center' }}>
         <h1 style={{ color: 'pink', fontSize: '5em' }}>E-commerce Microservices Blog</h1>
 
-        <section style={{ margin: '20px', padding: '20px', textAlign: 'left' }}>
+        {/* Top Navigation */}
+        <nav style={{ marginBottom: '40px', marginTop: '20px' }}>
+          <h3>Explore Each Microservice</h3>
+          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center', gap: '20px' }}>
+            <li><Link to="/users">User Service</Link></li>
+            <li><Link to="/products">Product Service</Link></li>
+            <li><Link to="/orders">Order Service</Link></li>
+            <li><Link to="/payment">Payment Service</Link></li>
+            <li><Link to="/inventory">Inventory Service</Link></li>
+            <li><Link to="/notification">Notification Service</Link></li>
+          </ul>
+        </nav>
+
+        {/* Main Content */}
+        <section style={{ margin: '40px 20px', padding: '20px', textAlign: 'left' }}>
           <h1>Understanding E-commerce Microservices Architecture</h1>
           <p>
             Microservices architecture is an approach to building a single application as a suite of small services, 
@@ -34,7 +48,20 @@ function App() {
           </ul>
         </section>
 
-        <nav style={{ margin: '20px 0' }}>
+        {/* Main Routes */}
+        <div style={{ marginBottom: '40px' }}>
+          <Routes>
+            <Route path="/users" element={<UserService />} />
+            <Route path="/products" element={<ProductService />} />
+            <Route path="/orders" element={<OrderService />} />
+            <Route path="/payment" element={<PaymentService />} />
+            <Route path="/inventory" element={<InventoryService />} />
+            <Route path="/notification" element={<NotificationService />} />
+          </Routes>
+        </div>
+
+        {/* Bottom Navigation */}
+        <nav style={{ marginTop: '40px', marginBottom: '20px' }}>
           <h3>Explore Each Microservice</h3>
           <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center', gap: '20px' }}>
             <li><Link to="/users">User Service</Link></li>
@@ -45,19 +72,9 @@ function App() {
             <li><Link to="/notification">Notification Service</Link></li>
           </ul>
         </nav>
-
-        <Routes>
-          <Route path="/users" element={<UserService />} />
-          <Route path="/products" element={<ProductService />} />
-          <Route path="/orders" element={<OrderService />} />
-          <Route path="/payment" element={<PaymentService />} />
-          <Route path="/inventory" element={<InventoryService />} />
-          <Route path="/notification" element={<NotificationService />} />
-        </Routes>
       </div>
     </Router>
   );
 }
 
 export default App;
-
