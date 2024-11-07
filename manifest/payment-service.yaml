@@ -30,17 +30,5 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8083
-  type: ClusterIP
-
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: payment-service-route
-spec:
-  to:
-    kind: Service
-    name: payment-service
-  port:
-    targetPort: 8083
+  type: NodePort
 
