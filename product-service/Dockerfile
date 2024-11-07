@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Expose the port specified in .env
-EXPOSE 8002
+EXPOSE 8080
 
 # Start the app
 CMD ["node", "src/index.js"]
