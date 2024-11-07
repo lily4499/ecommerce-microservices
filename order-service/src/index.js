@@ -1,19 +1,28 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const app = express();
+const cors = require('cors'); // Import CORS
 
+const app = express();
 dotenv.config();
 
 const PORT = process.env.PORT || 8082;
 
+// CORS configuration
+const corsOptions = {
+    origin: 'http://frontend-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com', // Replace with your actual frontend URL
+    methods: ['GET', 'POST'], // Allow specific methods
+    credentials: true, // Allow credentials if needed
+};
+
+// Use middleware
+app.use(cors(corsOptions)); // Enable CORS
 app.use(express.json());
-//app.use(cors());
-//app.use(helmet());
-//app.use(morgan('combined'));
+// app.use(helmet()); // Uncomment if you want to use helmet for security
+// app.use(morgan('combined')); // Uncomment if you want to log requests
 
 // Root route for the browser
 app.get('/', (req, res) => {
-  res.send(`
+    res.send(`
     <h1 style="color: purple; font-size: 4em; text-align: center; padding-top: 20px;">
       Welcome to the Order Service!
     </h1>
@@ -28,16 +37,16 @@ app.get('/', (req, res) => {
 
 // Define order routes
 app.get('/orders', (req, res) => {
-  res.status(200).json({ message: "Retrieve all orders" });
+    res.status(200).json({ message: "Retrieve all orders" });
 });
 
 app.post('/orders', (req, res) => {
-  const orderData = req.body;
-  // Logic to process new order
-  res.status(201).json({ message: "Order created successfully", order: orderData });
+    const orderData = req.body;
+    // Logic to process new order
+    res.status(201).json({ message: "Order created successfully", order: orderData });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Order Service running on port ${PORT}`);
+    console.log(`Order Service running on port ${PORT}`);
 });
