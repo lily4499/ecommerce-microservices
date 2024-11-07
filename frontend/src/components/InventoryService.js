@@ -1,23 +1,33 @@
+// src/components/InventoryService.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import config from '../config';
 
 function InventoryService() {
   const [inventory, setInventory] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_INVENTORY_SERVICE_URL}/inventory`)
+    axios.get(`${config.INVENTORY_SERVICE_URL}/inventory`)
       .then(response => setInventory(response.data))
-      .catch(error => console.error("Error fetching inventory:", error));
+      .catch(error => {
+        console.error("Error fetching inventory:", error);
+        setError("Failed to load inventory data");
+      });
   }, []);
 
   return (
     <div>
       <h2>Inventory List</h2>
-      <ul>
-        {inventory.map((item, index) => (
-          <li key={index}>{item.productName}: {item.quantity}</li>
-        ))}
-      </ul>
+      {error ? (
+        <p style={{ color: 'red' }}>{error}</p>
+      ) : (
+        <ul>
+          {inventory.map((item, index) => (
+            <li key={index}>{item.productName}: {item.quantity}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
