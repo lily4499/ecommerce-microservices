@@ -6,28 +6,17 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Stage 2: Serve the app with Nginx
-FROM nginx:alpine
+# Stage 2: Serve the app with Node.js
+FROM node:16-alpine
+
+# Set working directory
+WORKDIR /app
 
 # Copy the built app from the previous stage
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/build .
 
-# Ensure necessary directories have the correct permissions
-USER root
-RUN mkdir -p /var/cache/nginx/client_temp \
-             /var/cache/nginx/proxy_temp \
-             /var/cache/nginx/fastcgi_temp \
-             /var/cache/nginx/uwsgi_temp \
-             /var/cache/nginx/scgi_temp \
-             /var/run \
-             /etc/nginx/conf.d && \
-    chown -R nginx:nginx /var/cache/nginx /var/run /etc/nginx/conf.d
+# Install a lightweight HTTP server to serve static files
+RUN npm install -g serve
 
-# Switch to nginx user for security best practices
-USER nginx
-
-# Expose the default Nginx port
-EXPOSE 80
-
-# Run Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Serve the app on port 3000
+CMD ["serve", "-s", ".", "-l", "3000"]
