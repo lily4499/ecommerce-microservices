@@ -1,19 +1,28 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const app = express();
+const cors = require('cors'); // Import cors
 
+const app = express();
 dotenv.config();
 
 const PORT = process.env.PORT || 8087;
 
+// CORS configuration
+const corsOptions = {
+    origin: 'http://frontend-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com', // Replace with your actual frontend URL
+    methods: ['GET', 'POST'], // Allow specific methods
+    credentials: true, // Allow credentials if needed
+};
+
+// Use middleware
+app.use(cors(corsOptions)); // Enable CORS
 app.use(express.json());
-//app.use(cors());
-//app.use(helmet());
-//app.use(morgan('combined'));
+// app.use(helmet()); // Uncomment if you want to use helmet for security
+// app.use(morgan('combined')); // Uncomment if you want to log requests
 
 // Root route for the browser
 app.get('/', (req, res) => {
-  res.send(`
+    res.send(`
     <h1 style="color: gold; font-size: 4em; text-align: center; padding-top: 20px;">
       Welcome to the User Service API!
     </h1>
@@ -31,19 +40,19 @@ app.get('/', (req, res) => {
 
 // Define user routes
 app.get('/users', (req, res) => {
-  const users = [
-    { id: 1, name: "User A" },
-    { id: 2, name: "User B" },
-  ];
-  res.status(200).json(users);
+    const users = [
+        { id: 1, name: "User A" },
+        { id: 2, name: "User B" },
+    ];
+    res.status(200).json(users);
 });
 
 app.post('/users', (req, res) => {
-  const newUser = req.body;
-  res.status(201).json({ message: "User created successfully", user: newUser });
+    const newUser = req.body;
+    res.status(201).json({ message: "User created successfully", user: newUser });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`User Service running on port ${PORT}`);
+    console.log(`User Service running on port ${PORT}`);
 });
