@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Root route for the browser
 app.get('/', (req, res) => {
-  res.send("
+  res.send(`
    <h1 style="color: teal; font-size: 2.5em; text-align: center; padding-top: 20px;">
         Welcome to the Order Service!
     </h1>
@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
         that every purchase journey is smooth and reliable. If you have any questions or need assistance, our support team 
         is ready to help.
     </p>
-    ");
+    `);
 });
 
 // Define order routes
