@@ -1,38 +1,15 @@
-// frontend/src/components/InventoryService.js
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const InventoryService = () => {
-    const [inventory, setInventory] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchInventory = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_INVENTORY_SERVICE_URL}inventory`);
-                setInventory(response.data);
-            } catch (error) {
-                console.error('Error fetching inventory:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchInventory();
-    }, []);
-
-    if (loading) return <div>Loading...</div>;
-
+const UserService = () => {
     return (
         <div>
-            <h2>Inventory Service</h2>
-            <ul>
-                {inventory.map(item => (
-                    <li key={item.id}>{item.productName} - Quantity: {item.quantity}</li>
-                ))}
-            </ul>
+            <h2>User Service</h2>
+            <p>This service manages user information and authentication.</p>
+            {/* Back to Frontend Link */}
+            <Link to="/">Back to Frontend</Link>
         </div>
     );
 };
 
-export default InventoryService;
+export default UserService;
