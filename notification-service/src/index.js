@@ -1,11 +1,17 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const app = express();
-const PORT = process.env.PORT || 8085;
 
 dotenv.config();
 
+const PORT = process.env.PORT || 8085;
+
 app.use(express.json());
+
+// Root route for the browser
+app.get('/', (req, res) => {
+  res.send("Welcome to the Notification Service!");
+});
 
 // Define notification route
 app.post('/notify', (req, res) => {
@@ -13,7 +19,6 @@ app.post('/notify', (req, res) => {
 });
 
 // Start server
-app.listen(process.env.PORT, () => {
-  console.log(`Notification Service running on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Notification Service running on port ${PORT}`);
 });
-
