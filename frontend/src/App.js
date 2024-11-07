@@ -1,28 +1,28 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import UserService from './components/UserService';
-import ProductService from './components/ProductService';
-import OrderService from './components/OrderService';
-import PaymentService from './components/PaymentService';
-import InventoryService from './components/InventoryService';
-import NotificationService from './components/NotificationService';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import UserService from './components/UserService'; // Keep these components if needed
+import ProductService from './components/ProductService'; // Keep these components if needed
+import OrderService from './components/OrderService'; // Keep these components if needed
+import PaymentService from './components/PaymentService'; // Keep these components if needed
+import InventoryService from './components/InventoryService'; // Keep these components if needed
+import NotificationService from './components/NotificationService'; // Keep these components if needed
 
 function App() {
   return (
     <Router>
       <div style={{ textAlign: 'center' }}>
-        <h1 style={{ color: 'pink', fontSize: '5em' }}>E-commerce Microservices Blog</h1>
+        <h1 style={{ color: 'pink', fontSize: '5em' }}>E-commerce Microservices DEMO</h1>
 
         {/* Top Navigation */}
         <nav style={{ marginBottom: '40px', marginTop: '20px' }}>
           <h3>Explore Each Microservice</h3>
           <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center', gap: '20px' }}>
-            <li><Link to="/users">User Service</Link></li>
-            <li><Link to="/products">Product Service</Link></li>
-            <li><Link to="/orders">Order Service</Link></li>
-            <li><Link to="/payment">Payment Service</Link></li>
-            <li><Link to="/inventory">Inventory Service</Link></li>
-            <li><Link to="/notification">Notification Service</Link></li>
+            <li><a href="http://user-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">User Service</a></li>
+            <li><a href="http://product-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Product Service</a></li>
+            <li><a href="http://order-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Order Service</a></li>
+            <li><a href="http://payment-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Payment Service</a></li>
+            <li><a href="http://inventory-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Inventory Service</a></li>
+            <li><a href="http://notification-service-lili2024-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/" target="_blank" rel="noopener noreferrer">Notification Service</a></li>
           </ul>
         </nav>
 
@@ -48,7 +48,7 @@ function App() {
           </ul>
         </section>
 
-        {/* Main Routes */}
+        {/* Main Routes - Optional if not used */}
         <div style={{ marginBottom: '40px' }}>
           <Routes>
             <Route path="/users" element={<UserService />} />
@@ -59,19 +59,6 @@ function App() {
             <Route path="/notification" element={<NotificationService />} />
           </Routes>
         </div>
-
-        {/* Bottom Navigation */}
-        <nav style={{ marginTop: '40px', marginBottom: '20px' }}>
-          <h3>Explore Each Microservice</h3>
-          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', justifyContent: 'center', gap: '20px' }}>
-            <li><Link to="/users">User Service</Link></li>
-            <li><Link to="/products">Product Service</Link></li>
-            <li><Link to="/orders">Order Service</Link></li>
-            <li><Link to="/payment">Payment Service</Link></li>
-            <li><Link to="/inventory">Inventory Service</Link></li>
-            <li><Link to="/notification">Notification Service</Link></li>
-          </ul>
-        </nav>
       </div>
     </Router>
   );
