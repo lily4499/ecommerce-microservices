@@ -1,13 +1,17 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const app = express();
-const PORT = process.env.PORT || 8084;
 
 dotenv.config();
 
+const PORT = process.env.PORT || 8084;
 
 app.use(express.json());
+
+// Root route for the browser
+app.get('/', (req, res) => {
+  res.send("Welcome to the Inventory Service!");
+});
 
 // Define inventory routes
 app.get('/inventory', (req, res) => {
@@ -19,7 +23,7 @@ app.post('/inventory', (req, res) => {
 });
 
 // Start server
-app.listen(process.env.PORT, () => {
-  console.log(`Inventory Service running on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`Inventory Service running on port ${PORT}`);
 });
 
