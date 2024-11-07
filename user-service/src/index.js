@@ -1,5 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const app = express();
 
 dotenv.config();
@@ -7,47 +10,40 @@ dotenv.config();
 const PORT = process.env.PORT || 8087;
 
 app.use(express.json());
+app.use(cors());
+app.use(helmet());
+app.use(morgan('combined'));
 
-// Define routes
+// Root route for the browser
 app.get('/', (req, res) => {
   res.send(`
-  <h1 style="color: purple; font-size: 2.5em; text-align: center; padding-top: 20px;">
-        Welcome to the User Service API!
+    <h1 style="color: gold; font-size: 4em; text-align: center; padding-top: 20px;">
+      Welcome to the User Service API!
     </h1>
     <p style="font-size: 1.3em; text-align: center; padding: 20px;">
-        The User Service API is an essential part of our e-commerce platform, dedicated to managing all aspects 
-        of user information and interaction. This service provides a secure, efficient, and scalable solution 
-        for handling user data, including profile creation, authentication, and account management.
+      This service manages user profiles, authentication, and account details for a secure e-commerce experience.
     </p>
     <p style="font-size: 1.3em; text-align: center; padding: 20px;">
-        Our API allows users to create and update profiles, manage their account details, and securely log 
-        into their accounts. With advanced authentication and authorization protocols, the User Service API 
-        ensures that all user data is protected and only accessible by authorized personnel.
+      Access order history, receive updates, and manage your account seamlessly with our integrated API.
     </p>
     <p style="font-size: 1.3em; text-align: center; padding: 20px;">
-        Additionally, the User Service API integrates seamlessly with other services, such as the Order and 
-        Notification Services, to provide a smooth user experience. For instance, once authenticated, users 
-        can access their order history, receive personalized notifications, and update their preferences, 
-        all from within a single platform.
-    </p>
-    <p style="font-size: 1.3em; text-align: center; padding: 20px;">
-        Whether you are managing account settings, viewing order history, or updating personal information, 
-        the User Service API is here to make the experience as seamless and secure as possible. Thank you for 
-        being a valued user of our platform!
-    </p>
-    <p style="font-size: 1.3em; text-align: center; padding: 20px;">
-        For more information on using the User Service API, please explore our documentation or contact support. 
-        We're here to help you make the most of your user experience on our platform.
+      Thank you for using our platform!
     </p>
   `);
 });
 
+// Define user routes
 app.get('/users', (req, res) => {
-  res.send("Get all users");
+  const users = [
+    { id: 1, name: "User A" },
+    { id: 2, name: "User B" },
+  ];
+  res.status(200).json(users);
 });
 
 app.post('/users', (req, res) => {
-  res.send("Create new user");
+  const newUser = req.body;
+  res.status(201).json({ message: "User created successfully", user: newUser });
 });
 
 // Start server
