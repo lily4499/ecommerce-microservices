@@ -30,17 +30,6 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8085
-  type: ClusterIP
+  type: NodePort
 
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: notification-service-route
-spec:
-  to:
-    kind: Service
-    name: notification-service
-  port:
-    targetPort: 8085
 
